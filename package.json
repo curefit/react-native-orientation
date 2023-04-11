@@ -1,5 +1,5 @@
 {
-  "name": "react-native-orientation",
+  "name": "@curefit/react-native-orientation",
   "version": "3.1.4",
   "description": "Listen to device orientation changes in React Native applications and programmatically set preferred orientations on a per screen basis",
   "main": "index.js",
@@ -30,12 +30,8 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yamill/react-native-orientation.git"
+    "url": "git+https://github.com/curefit/react-native-orientation.git"
   },
-  "bugs": {
-    "url": "https://github.com/yamill/react-native-orientation/issues"
-  },
-  "homepage": "https://github.com/yamill/react-native-orientation#readme",
   "rnpm": {
     "android": {
       "packageInstance": "new OrientationPackage()"
