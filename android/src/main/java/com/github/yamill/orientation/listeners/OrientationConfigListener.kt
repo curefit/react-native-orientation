@@ -28,8 +28,14 @@ class OrientationConfigListener internal constructor(
 
     override fun onHostResume() {
         val activity = onGetCurrentActivity()
+
         if (activity != null) {
-            activity.registerReceiver(receiver, IntentFilter(INTENT_ACTION_CONFIG_CHANGED))
+            // Android 14 enforces that BroadcastReceivers must be registered in a lifecycle-aware way.
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) { // Android 14
+                activity.registerReceiver(receiver, IntentFilter(INTENT_ACTION_CONFIG_CHANGED), Context.RECEIVER_EXPORTED)
+            } else {
+                activity.registerReceiver(receiver, IntentFilter(INTENT_ACTION_CONFIG_CHANGED))
+            }
         } else {
             FLog.e(ReactConstants.TAG, "no activity to register receiver")
         }
