@@ -12,6 +12,7 @@ import com.facebook.react.bridge.LifecycleEventListener
 import com.facebook.react.bridge.ReactContext
 import com.facebook.react.common.ReactConstants
 import com.facebook.react.modules.core.DeviceEventManagerModule
+import android.os.Build
 
 class OrientationConfigListener internal constructor(
     private val reactContext: ReactContext,
