@@ -177,8 +177,10 @@ RCT_EXPORT_METHOD(lockToPortrait)
   #if DEBUG
     NSLog(@"Locked to Portrait");
   #endif
+  dispatch_sync(dispatch_get_main_queue(), ^{
     [Orientation setOrientation:UIInterfaceOrientationMaskPortrait];
     [self lockToOrientationWithMask:UIInterfaceOrientationMaskPortrait interfaceOrientation:UIInterfaceOrientationPortrait deviceOrientation:UIDeviceOrientationPortrait];
+      });
 }
 
 RCT_EXPORT_METHOD(lockToLandscape)
@@ -206,8 +208,10 @@ RCT_EXPORT_METHOD(lockToLandscapeLeft)
   #if DEBUG
     NSLog(@"Locked to Landscape Left");
   #endif
+    dispatch_sync(dispatch_get_main_queue(), ^{
     [Orientation setOrientation:UIInterfaceOrientationMaskLandscapeLeft];
     [self lockToOrientationWithMask:UIInterfaceOrientationMaskLandscapeLeft interfaceOrientation:UIInterfaceOrientationLandscapeLeft deviceOrientation:UIDeviceOrientationLandscapeLeft];
+    });
 }
 
 RCT_EXPORT_METHOD(lockToLandscapeRight)
@@ -215,8 +219,10 @@ RCT_EXPORT_METHOD(lockToLandscapeRight)
   #if DEBUG
     NSLog(@"Locked to Landscape Right");
   #endif
+      dispatch_sync(dispatch_get_main_queue(), ^{
     [Orientation setOrientation:UIInterfaceOrientationMaskLandscapeRight];
     [self lockToOrientationWithMask:UIInterfaceOrientationMaskLandscapeRight interfaceOrientation:UIInterfaceOrientationLandscapeRight deviceOrientation:UIDeviceOrientationLandscapeRight];
+      });
 }
 
 RCT_EXPORT_METHOD(unlockAllOrientations)
@@ -224,7 +230,9 @@ RCT_EXPORT_METHOD(unlockAllOrientations)
   #if DEBUG
     NSLog(@"Unlock All Orientations");
   #endif
+    dispatch_sync(dispatch_get_main_queue(), ^{
   [Orientation setOrientation:UIInterfaceOrientationMaskAllButUpsideDown];
+      });
 //  AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 //  delegate.orientation = 3;
 }
