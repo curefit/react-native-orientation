@@ -138,10 +138,9 @@ class OrientationModule(reactContext: ReactApplicationContext) :
             currentActivity?.requestedOrientation = lockState.orientationInt
         }
 
-        // When disabled ensure we are unspecified.
         val autoRotationDisabled = !autoRotateEnabled && !autoRotateIgnored
         if  (autoRotationDisabled && lockState != LockState.UNSPECIFIED) {
-            currentActivity?.requestedOrientation = LockState.UNSPECIFIED.orientationInt
+            currentActivity?.requestedOrientation = lockState.orientationInt
         }
     }
 
